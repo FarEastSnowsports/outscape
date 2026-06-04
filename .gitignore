@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+
+# Large self-contained export (regenerable)
+*.artifact.html
+
+# Temp preview slices
+_pv_*.html
+
+# Unused reference mockups (kept locally, not in repo)
+assets/p*_x*.png
