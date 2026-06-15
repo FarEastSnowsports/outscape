@@ -556,4 +556,23 @@ a.why-card:hover h4{color:var(--orange)}
   .why-grid{grid-template-columns:1fr 1fr;gap:20px}
   .spec-card{width:96px}.spec-name{font-size:10.5px}
   .spec-bar{margin:64px 4% 64px}.spec-ends{margin:0 4%}
+  .gearup .wrap{padding:48px 24px}.gearup .lead-en{font-size:17px}
 }
+
+/* ---------- TWO-TIER / SALE PRICE ---------- */
+.was{text-decoration:line-through;color:var(--muted);font-weight:600;opacity:.85}
+.pprice .was{font-size:13px;margin-right:5px}
+.per-extra{display:block;font-size:11px;font-weight:500;color:var(--muted);margin-top:3px;line-height:1.4}
+.fact .v .was{font-size:13px;margin-right:4px}
+.booking .price .was{font-size:18px;margin-right:8px;display:inline-block}
+.mx-colhead .was{font-size:12px;margin-right:3px}
+.sale-flag{display:inline-block;font-family:'Inter';font-weight:700;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--orange);padding:3px 7px;border-radius:20px;margin-left:6px;vertical-align:middle}
+
+/* ---------- GEAR-UP SECTION (FD differentiator) ---------- */
+.gearup{background:var(--white)}
+.gearup .wrap{padding:60px 60px 64px}
+.gearup-inner{max-width:740px}
+.gearup .fd-flag{display:inline-block;font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.gearup .lead-en{font-weight:300;font-size:19px;line-height:1.65;color:var(--navy)}
+.gearup .lead-en b{font-weight:700;color:var(--navy)}
+.gearup .lead-jp{font-weight:300;font-size:13.5px;line-height:1.95;color:#6a7280;margin-top:16px;border-top:1px dashed var(--line);padding-top:16px}
