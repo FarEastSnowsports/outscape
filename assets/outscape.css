@@ -521,7 +521,7 @@ a.why-card:hover h4{color:var(--orange)}
 /* ---------- WHERE TO EAT ---------- */
 .eat{padding:64px 0 24px}
 .eat-intro{max-width:760px;font-weight:300;font-size:15.5px;line-height:1.8;color:#4a4a4a;margin:-14px 0 30px}
-.eat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.eat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .eat-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
 .eat-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(58,79,102,.10)}
 .eat-photo{height:150px;overflow:hidden}
