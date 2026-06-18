@@ -500,6 +500,18 @@ svg.line{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;str
 .why{background:var(--cream);margin-top:80px;padding:70px 0}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:18px}
 
+/* ---------- SPRING WATER (signature ritual) ---------- */
+.spring{background:linear-gradient(180deg,#e9f3fb 0%,#f5fafd 100%);text-align:center}
+.spring .wrap{padding:68px 60px;max-width:780px}
+.spring .ic{display:inline-flex;width:58px;height:58px;align-items:center;justify-content:center;border-radius:50%;background:#fff;border:1px solid var(--line);margin-bottom:18px}
+.spring .ic svg{width:30px;height:30px;stroke:var(--sky);fill:none;stroke-width:1.6}
+.spring .eyebrow{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);margin-bottom:12px}
+.spring h3{font-family:'Inter';font-weight:800;font-size:33px;line-height:1.2;color:var(--navy)}
+.spring h3 .accent{color:var(--sky)}
+.spring p{font-weight:300;font-size:16px;line-height:1.8;color:#46525f;margin:18px auto 0;max-width:660px}
+.spring p b{font-weight:700;color:var(--navy)}
+.spring .jpline{font-family:'Noto Sans JP';font-weight:300;font-size:13px;color:#7a8694;margin-top:14px}
+
 /* ---------- MEET YOUR GUIDE (Sakka feature) ---------- */
 .guidefeat{background:var(--white)}
 .guidefeat .wrap{padding:74px 60px;display:grid;grid-template-columns:0.85fr 1.15fr;gap:52px;align-items:center}
@@ -585,6 +597,7 @@ a.why-card:hover h4{color:var(--orange)}
   .why-grid{grid-template-columns:1fr 1fr;gap:20px}
   .spec-card{width:96px}.spec-name{font-size:10.5px}
   .spec-bar{margin:64px 4% 64px}.spec-ends{margin:0 4%}
+  .spring .wrap{padding:48px 24px}.spring h3{font-size:26px}
   .guidefeat .wrap{grid-template-columns:1fr;gap:26px;padding:48px 24px}
   .guidefeat-photo{max-width:340px;margin:0 auto;width:100%}
   .guidefeat h3{font-size:25px}.why-grid{grid-template-columns:repeat(2,1fr)}
