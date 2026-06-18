@@ -249,9 +249,11 @@ section{position:relative}
 .badge{font-family:'Inter';font-weight:600;font-size:12.5px;color:var(--navy);background:var(--cream);border:1px solid var(--line);border-radius:40px;padding:6px 14px}
 
 /* ---------- COURSE LEVEL CHIP ---------- */
-.course .lvl{display:none;font-family:'Inter';font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:30px;margin-top:10px}
+.lvl{font-family:'Inter';font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:20px;display:inline-block}
+.course .lvl{display:none}
 .lvl.easy{background:#E3F1DA;color:#4d7a3a}
 .lvl.mod{background:#FBEBD6;color:#b27a36}
+.lvl.chall{background:#f3d9cf;color:#b0573a}
 
 /* ---------- TIMELINE (A typical morning) ---------- */
 .timeline{padding:30px 0 10px}
@@ -450,11 +452,14 @@ svg.line{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;str
 .spec-bar{position:relative;height:8px;border-radius:8px;background:linear-gradient(90deg,#9ccb7e 0%,#E5AA6C 55%,#d07e5e 100%);margin:64px 8% 64px}
 .spec-pt{position:absolute;top:50%;transform:translateX(-50%)}
 .spec-dot{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--navy);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2}
-.spec-card{position:absolute;left:50%;transform:translateX(-50%);width:150px;text-align:center;font-family:'Inter'}
+.spec-card{position:absolute;left:50%;transform:translateX(-50%);width:130px;text-align:center;font-family:'Inter'}
 .spec-card.up{bottom:18px}
 .spec-card.down{top:18px}
-.spec-name{font-weight:700;font-size:12px;color:var(--navy);line-height:1.3}
-.spec-name small{display:block;font-weight:500;font-size:10.5px;color:var(--muted);margin-top:2px}
+.spec-badge{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:5px 10px 5px 7px;font-weight:700;font-size:11px;border:1.5px solid;white-space:nowrap;letter-spacing:.01em}
+.spec-badge svg{width:13px;height:13px;flex:0 0 auto}
+.spec-badge.stroll{background:#edfae9;border-color:#5a9c54;color:#5a9c54}
+.spec-badge.hike{background:#fef3eb;border-color:var(--orange);color:var(--orange)}
+.spec-name{font-weight:600;font-size:10px;color:var(--muted);margin-top:5px;letter-spacing:.04em;text-transform:uppercase}
 .spec-ends{display:flex;justify-content:space-between;margin:0 8%;font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .spec-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
 .spec-legend .lv{border:1px solid var(--line);border-radius:14px;padding:18px 20px}
@@ -537,6 +542,7 @@ svg.line{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;str
 .why-card .ic{width:50px;height:50px;margin:0 auto 14px;background:#fff;border:1px solid var(--line);transition:transform .2s,border-color .2s}
 .why-card h4{font-family:'Inter';font-weight:700;font-size:15px;color:var(--navy);margin-bottom:7px}
 .why-card p{font-weight:300;font-size:13px;color:#5a5346;line-height:1.6}
+.why-adv{display:block;margin-top:7px;font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.55}
 a.why-card{cursor:pointer}
 a.why-card:hover .ic{transform:translateY(-3px);border-color:var(--sky)}
 a.why-card:hover h4{color:var(--orange)}
