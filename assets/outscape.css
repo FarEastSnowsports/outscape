@@ -614,6 +614,7 @@ a.why-card:hover h4{color:var(--orange)}
   .booking{padding:38px 26px}.booking-head{flex-direction:column;align-items:flex-start}
   .booking .price{text-align:left}
   .foot{padding:44px 24px 32px}
+  .foot-links{flex-wrap:wrap;gap:22px 40px}
   .os-modal{padding:20px 12px}
   .os-cmp{padding:22px 16px 24px}
   .cmp-lab{padding:10px 8px;font-size:9px;letter-spacing:.06em}
@@ -636,6 +637,55 @@ a.why-card:hover h4{color:var(--orange)}
   .guidefeat h3{font-size:25px}.why-grid{grid-template-columns:repeat(2,1fr)}
   .gearup .wrap{padding:48px 24px}.gearup .lead-en{font-size:17px}
   .gearup-photos{gap:8px;margin-top:24px}.gearup-photos img{height:120px}
+
+  /* --- section header: stack title over script --- */
+  .sec-head{flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:24px}
+  .sec-head h3{font-size:24px}
+  .sec-head .script{font-size:20px;transform:rotate(-1.5deg)}
+
+  /* --- heading sizes --- */
+  .intro h2{font-size:24px;line-height:1.3}
+  .lead-intro h2{font-size:24px}
+
+  /* --- even vertical rhythm between sections (~44–48px) --- */
+  .lead-intro{padding:48px 0 0}
+  .matrix{padding:44px 0 8px}
+  .spectrum{padding:48px 0 8px}
+  .courses{padding:40px 0 8px}
+  .gallery{padding:44px 0 8px}
+  .timeline{padding:40px 0 8px}
+  .season{padding:44px 0 8px}
+  .how{padding:48px 0 8px}
+  .why{margin-top:36px;padding:48px 0}
+  .faq{padding:44px 0 24px}
+  .eat{padding:48px 0 20px}
+
+  /* --- spectrum tidy-up --- */
+  .spec-bar{margin:52px 6% 56px}
+  .spec-card{width:90px}
+  .spec-pt:first-child .spec-card{transform:translateX(-32%)}
+  .spec-badge{font-size:10px;padding:4px 9px 4px 6px}
+  .spec-badge svg{width:11px;height:11px}
+  .spec-name{font-size:9.5px}
+  .spec-legend{grid-template-columns:1fr;gap:12px}
+  .spec-ends{font-size:9.5px}
+}
+
+/* ---------- PHONE ---------- */
+@media(max-width:560px){
+  .facts{grid-template-columns:1fr 1fr}
+  .eat-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .sec-head h3{font-size:22px}
+  .intro h2,.lead-intro h2{font-size:23px}
+  .season-timing{flex-direction:column;gap:14px;padding:20px 18px}
+  .season-pin{display:none}
+  .suntimes{gap:4px}
+  .suntime{padding:8px 3px;border-radius:9px}
+  .suntime .m{font-size:10px;letter-spacing:.04em}
+  .suntime .row2{font-size:11px;gap:3px;margin-top:4px}
+  .suntime .row2.set{margin-top:2px}
+  .suntime .row2 svg{width:11px;height:11px}
 }
 
 /* ---------- TWO-TIER / SALE PRICE ---------- */
