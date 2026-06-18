@@ -339,6 +339,23 @@ section{position:relative}
 .season-cap{text-align:center;font-weight:300;font-size:13.5px;color:#5a5346;margin-top:10px}
 .season-cap b{color:var(--navy);font-weight:600}
 
+/* three-season highlight cards */
+.season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.season-card{border:1px solid var(--line);border-top-width:3px;border-radius:14px;padding:18px 20px 16px;background:#fff}
+.season-card.s-early{border-top-color:#7bb35e}
+.season-card.s-late{border-top-color:#4d7a3a}
+.season-card.s-autumn{border-top-color:#d4933f}
+.season-card .sc-h{display:flex;align-items:baseline;gap:9px;margin-bottom:11px;flex-wrap:wrap}
+.season-card .sc-h b{font-family:'Inter';font-weight:700;font-size:15px;color:var(--navy)}
+.season-card .sc-h .mo{font-family:'Inter';font-weight:600;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.season-card ul{list-style:none;margin:0;padding:0}
+.season-card li{font-weight:300;font-size:13px;color:#4a4a4a;line-height:1.5;padding:5px 0 5px 17px;position:relative}
+.season-card li b{font-weight:600;color:var(--navy)}
+.season-card li::before{content:"";position:absolute;left:1px;top:11px;width:6px;height:6px;border-radius:50%}
+.season-card.s-early li::before{background:#7bb35e}
+.season-card.s-late li::before{background:#4d7a3a}
+.season-card.s-autumn li::before{background:#d4933f}
+
 /* daylight / timing callout */
 .season-timing{display:flex;gap:18px;align-items:flex-start;margin-top:26px;background:var(--cream);border-radius:14px;padding:22px 24px}
 .season-timing .ic{flex:0 0 auto;background:#fff;border:1px solid var(--line)}
@@ -586,6 +603,7 @@ a.why-card:hover h4{color:var(--orange)}
   .hero-title{left:30px;top:40px}.hero-script{left:34px}
   .featband .feat-list li{font-size:24px}
   .season-illus > img{height:auto}
+  .season-grid{grid-template-columns:1fr;gap:12px}
   .guide{grid-template-columns:1fr;gap:24px}
   .guide-photo{max-width:340px;margin:0 auto}
   .tl{grid-template-columns:1fr 1fr;gap:28px 0}
