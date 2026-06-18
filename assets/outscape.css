@@ -449,12 +449,12 @@ svg.line{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;str
 
 /* ---- difficulty spectrum ---- */
 .spectrum{padding:70px 0 10px}
-.spec-bar{position:relative;height:8px;border-radius:8px;background:linear-gradient(90deg,#9ccb7e 0%,#E5AA6C 55%,#d07e5e 100%);margin:64px 8% 64px}
+.spec-bar{position:relative;height:8px;border-radius:8px;background:linear-gradient(90deg,#9ccb7e 0%,#E5AA6C 55%,#d07e5e 100%);margin:64px 8% 80px}
 .spec-pt{position:absolute;top:50%;transform:translateX(-50%)}
 .spec-dot{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--navy);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2}
 .spec-card{position:absolute;left:50%;transform:translateX(-50%);width:130px;text-align:center;font-family:'Inter'}
-.spec-card.up{bottom:18px}
-.spec-card.down{top:18px}
+.spec-card.up{bottom:22px}
+.spec-card.down{top:22px}
 .spec-badge{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:5px 10px 5px 7px;font-weight:700;font-size:11px;border:1.5px solid;white-space:nowrap;letter-spacing:.01em}
 .spec-badge svg{width:13px;height:13px;flex:0 0 auto}
 .spec-badge.stroll{background:#edfae9;border-color:#5a9c54;color:#5a9c54}
