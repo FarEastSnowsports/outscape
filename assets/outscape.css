@@ -471,6 +471,21 @@ svg.line{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;str
 .spec-legend .lv-val small{font-weight:600;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:1px}
 .spec-note{font-weight:300;font-size:12px;font-style:italic;color:var(--muted);margin-top:16px}
 
+/* ---------- COURSE EFFORT SPECTRUM (tour pages) ---------- */
+.cspec-sec{padding:50px 0 8px}
+.cspec-intro{max-width:720px;font-weight:300;font-size:14.5px;line-height:1.7;color:#4a4a4a;margin:-12px 0 8px}
+.cspec-intro b{font-weight:700;color:var(--navy)}
+.cspec{margin-top:30px}
+.cspec-track{position:relative;height:10px;border-radius:8px;background:linear-gradient(90deg,#9ccb7e 0%,#E5AA6C 55%,#d07e5e 100%);margin:42px 0 20px}
+.cspec-zone{position:absolute;top:-30px;transform:translateX(-50%);font-family:'Inter';font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.cspec-zsep{position:absolute;top:-7px;width:1px;height:24px;background:rgba(255,255,255,.85)}
+.cspec-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:#fff;border:2.5px solid var(--navy);color:var(--navy);font-family:'Inter';font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 1px 5px rgba(0,0,0,.14)}
+.cspec-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px 22px;margin-top:6px}
+.cspec-li{display:flex;align-items:flex-start;gap:10px;font-weight:600;font-size:14px;color:var(--navy);line-height:1.4}
+.cspec-li .n{flex:0 0 auto;width:21px;height:21px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.cspec-li .s{font-weight:300;color:var(--muted)}
+.cspec-note{font-weight:300;font-size:12px;font-style:italic;color:var(--muted);margin-top:14px}
+
 /* ---- how it works ---- */
 .how{padding:70px 0 10px}
 .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:14px}
