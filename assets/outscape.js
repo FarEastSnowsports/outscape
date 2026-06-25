@@ -291,18 +291,28 @@
   };
 })();
 
-/* ---- hero crossfade (slow, invisible — kiri) ---- */
+/* ---- hero crossfade (kiri dissolve, randomised order) ---- */
 (function () {
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var HOLD = 7000; // ms each frame holds before dissolving
+  var HOLD = 5000; // ms each frame holds before dissolving
   document.querySelectorAll("[data-hero-fade]").forEach(function (h) {
     var slides = Array.prototype.slice.call(h.querySelectorAll(".hero-slide"));
     if (slides.length < 2) return;
-    var i = 0;
+    // start from whichever slide is active in markup, then shuffle the rest
+    var start = 0;
+    slides.forEach(function (s, i) { if (s.classList.contains("is-active")) start = i; });
+    var rest = [];
+    slides.forEach(function (_, i) { if (i !== start) rest.push(i); });
+    for (var k = rest.length - 1; k > 0; k--) {
+      var j = Math.floor(Math.random() * (k + 1));
+      var t = rest[k]; rest[k] = rest[j]; rest[j] = t;
+    }
+    var seq = [start].concat(rest);
+    var pos = 0;
     setInterval(function () {
-      slides[i].classList.remove("is-active");
-      i = (i + 1) % slides.length;
-      slides[i].classList.add("is-active");
+      slides[seq[pos]].classList.remove("is-active");
+      pos = (pos + 1) % seq.length;
+      slides[seq[pos]].classList.add("is-active");
     }, HOLD);
   });
 })();

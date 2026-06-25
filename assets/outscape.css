@@ -100,7 +100,7 @@ a{color:inherit;text-decoration:none}
 .hero-img{position:relative;height:74vh;min-height:520px;overflow:hidden;margin-left:42px}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
 /* slow invisible crossfade (kiri) — frames stack and dissolve */
-.hero-img .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 2.4s ease-in-out}
+.hero-img .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 2s ease-in-out}
 .hero-img .hero-slide.is-active{opacity:1}
 @media (prefers-reduced-motion: reduce){ .hero-img .hero-slide{transition:none} }
 .hero-img::after{content:"";position:absolute;inset:0;z-index:2;background:
