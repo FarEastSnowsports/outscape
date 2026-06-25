@@ -673,6 +673,10 @@ a.why-card:hover h4{color:var(--orange)}
   .spec-name{font-size:9.5px}
   .spec-legend{grid-template-columns:1fr;gap:12px}
   .spec-ends{font-size:9.5px}
+
+  /* restore a comfortable side gutter on mobile — these sections zero .wrap's padding */
+  .intro,.matrix,.spectrum,.courses,.gallery,.timeline,.season,
+  .how,.info,.access,.faq,.eat,.lead-intro{padding-left:24px;padding-right:24px}
 }
 
 /* ---------- PHONE ---------- */
@@ -740,4 +744,26 @@ a.why-card:hover h4{color:var(--orange)}
 @media (max-width:760px){
   .galp-grid{columns:1;column-gap:0}
   .galp-lead img{height:300px}
+}
+
+/* ---- season: average temperatures (what to wear) ---- */
+.season-temps{margin-top:18px;border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#fff}
+.season-temps .st-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.season-temps .st-head .ic{flex:none;color:var(--orange);margin-top:1px}
+.season-temps .st-head .ic svg{width:22px;height:22px}
+.season-temps .st-head h5{font-family:'Inter';font-weight:700;font-size:13.5px;color:var(--navy);margin:0 0 3px}
+.season-temps .st-head p{font-weight:300;font-size:12.5px;color:#5a5346;line-height:1.55;margin:0}
+.season-temps .st-head p b{color:var(--navy);font-weight:600}
+.st-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.st-col{text-align:center;border:1px solid var(--line);border-radius:10px;padding:10px 4px;background:var(--cream)}
+.st-col .m{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.st-col .hi{display:block;font-family:'Inter';font-weight:700;font-size:17px;color:#d4823f;line-height:1.1}
+.st-col .lo{display:block;font-family:'Inter';font-weight:600;font-size:13px;color:#5b86a8;line-height:1.2;margin-top:2px}
+.st-col .hi::after{content:" high";font-size:8.5px;font-weight:600;color:var(--muted);letter-spacing:.04em}
+.st-col .lo::after{content:" low";font-size:8.5px;font-weight:600;color:var(--muted);letter-spacing:.04em}
+@media(max-width:560px){
+  .st-grid{gap:5px}
+  .st-col{padding:9px 2px}
+  .st-col .hi{font-size:15px}
+  .st-col .hi::after,.st-col .lo::after{display:none}
 }
