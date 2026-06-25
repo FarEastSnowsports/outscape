@@ -22,6 +22,7 @@
     shinsen: {
       name: "Shinsen-numa &amp; Naga-numa", jp: "神仙沼・長沼",
       photo: "assets/course_shinsen.jpg",
+      photos: ["assets/courses/shinsen_1.jpg","assets/courses/shinsen_2.jpg","assets/courses/shinsen_3.jpg","assets/courses/shinsen_4.jpg"],
       level: "Easy", levelClass: "easy",
       difficulty: "Easy", duration: "~2.5 hrs", access: "Boardwalk", elevation: "+80 m",
       toilet: true, best: "Alpine marsh &amp; mirror ponds",
@@ -41,6 +42,7 @@
     hangetsu: {
       name: "Hangetsu-ko (Half Moon Lake)", jp: "半月湖",
       photo: "assets/course_hangetsu.jpg",
+      photos: ["assets/courses/hangetsu_1.jpg","assets/courses/hangetsu_2.jpg","assets/courses/hangetsu_3.jpg","assets/courses/hangetsu_4.jpg","assets/courses/hangetsu_5.jpg"],
       level: "Easy", levelClass: "easy",
       difficulty: "Easy", duration: "~2 hrs", access: "Forest trail", elevation: "+150 m",
       toilet: null, best: "Crater lake &amp; forest",
@@ -52,6 +54,7 @@
     usu: {
       name: "Showa-Shinzan &amp; Mt. Usu", jp: "昭和新山・有珠山",
       photo: "assets/course_usu.jpg",
+      photos: ["assets/courses/usu_1.jpg","assets/courses/usu_2.jpg","assets/courses/usu_3.jpg","assets/courses/usu_4.jpg"],
       level: "Easy · ropeway access", levelClass: "easy",
       difficulty: "Easy", duration: "~3 hrs", access: "Ropeway", elevation: "+150–250 m",
       toilet: true, best: "Active volcano &amp; Lake Toya",
@@ -71,6 +74,7 @@
     asahi: {
       name: "Asahigaoka", jp: "旭ヶ丘",
       photo: "assets/course_asahi.jpg",
+      photos: ["assets/courses/asahi_1.jpg","assets/courses/asahi_2.jpg","assets/courses/asahi_3.jpg","assets/courses/asahi_4.jpg"],
       level: "Easy", levelClass: "easy",
       difficulty: "Easy", duration: "~2 hrs", access: "Forest path", elevation: "+50 m",
       toilet: null, best: "Quiet forest &amp; light",
@@ -82,6 +86,7 @@
     oyachi: {
       name: "Oyachi", jp: "大谷地",
       photo: "assets/course_oyachi.jpg",
+      photos: ["assets/courses/oyachi_1.jpg","assets/courses/oyachi_2.jpg","assets/courses/oyachi_3.jpg"],
       level: "Easy", levelClass: "easy",
       difficulty: "Easy", duration: "~2 hrs", access: "Lakeside", elevation: "+30 m",
       toilet: null, best: "Wetland &amp; lakeshore",
@@ -166,6 +171,32 @@
       '</div>';
   }
 
+  // ---- PHOTO GALLERY (lead with images) ---------------------------------
+  function galleryHTML(c) {
+    var photos = (c.photos && c.photos.length) ? c.photos : [c.photo];
+    var ribbon = c.draft ? '<span class="draft-ribbon">Draft content</span>' : "";
+    var thumbs = photos.length > 1 ? '<div class="os-gal-thumbs">' + photos.map(function (p, i) {
+      return '<button class="os-thumb' + (i === 0 ? ' active' : '') + '" data-thumb="' + p + '" aria-label="Photo ' + (i + 1) + '"><img src="' + p + '" alt="" loading="lazy"></button>';
+    }).join("") + '</div>' : "";
+    var meta = '<div class="os-meta"><span class="lvl ' + c.levelClass + '">' + c.level + '</span>' +
+      '<span class="os-m">' + c.duration + '</span>' +
+      '<span class="os-m">' + c.elevation + '</span>' +
+      '<span class="os-m">' + c.access + '</span></div>';
+    return '' +
+      '<button class="os-close" aria-label="Close">&times;</button>' +
+      '<div class="os-gal">' +
+        '<div class="os-gal-hero"><img class="os-gal-img" src="' + photos[0] + '" alt="' + c.name + '">' + ribbon + '</div>' +
+        thumbs +
+      '</div>' +
+      '<div class="os-body">' +
+        '<h3 class="os-title">' + c.name + ' <span class="jp">' + c.jp + '</span></h3>' +
+        meta +
+        '<p class="ctag">' + c.tag + '</p>' +
+        '<p class="cdesc">' + c.desc + '</p>' +
+        meetHTML(c) +
+      '</div>';
+  }
+
   // ---- COMPARISON --------------------------------------------------------
   var CMP_ROWS = [
     ["Difficulty", function (c) { return '<span class="lvl ' + c.levelClass + '">' + c.difficulty + '</span>'; }],
@@ -206,7 +237,14 @@
     overlay = el('<div class="os-modal" role="dialog" aria-modal="true"><div class="os-sheet"></div></div>');
     document.body.appendChild(overlay);
     overlay.addEventListener("click", function (e) {
-      if (e.target === overlay || e.target.classList.contains("os-close")) closeModal();
+      if (e.target === overlay || e.target.classList.contains("os-close")) { closeModal(); return; }
+      var th = e.target.closest && e.target.closest("[data-thumb]");
+      if (th) {
+        var img = overlay.querySelector(".os-gal-img");
+        if (img) img.src = th.getAttribute("data-thumb");
+        overlay.querySelectorAll(".os-thumb").forEach(function (b) { b.classList.toggle("active", b === th); });
+        return;
+      }
       var d = e.target.closest && e.target.closest("[data-detail]");
       if (d) { openDetail(d.getAttribute("data-detail")); }
     });
@@ -227,7 +265,8 @@
   }
   function openDetail(id) {
     var c = COURSES[id]; if (!c) return;
-    openSheet(detailHTML(c), false);
+    var hasPhotos = (c.photos && c.photos.length) || c.photo;
+    openSheet(hasPhotos ? galleryHTML(c) : detailHTML(c), false);
   }
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
 
@@ -280,8 +319,36 @@
   document.addEventListener("click", function (e) {
     var d = e.target.closest("[data-detail]");
     if (d && !e.target.closest(".os-modal")) { e.preventDefault(); openDetail(d.getAttribute("data-detail")); return; }
-    var c = e.target.closest("[data-compare]");
-    if (c) { e.preventDefault(); toggleCompare(c.getAttribute("data-compare")); }
+    var cmp = e.target.closest("[data-compare]");
+    if (cmp) { e.preventDefault(); toggleCompare(cmp.getAttribute("data-compare")); return; }
+    // whole course card opens its photo gallery (id taken from the hidden detail button)
+    var card = e.target.closest(".course");
+    if (card && !e.target.closest(".os-modal")) {
+      var btn = card.querySelector("[data-detail]");
+      if (btn) { e.preventDefault(); openDetail(btn.getAttribute("data-detail")); }
+    }
+  });
+
+  // mark course cards that have a gallery so they look/act clickable
+  function markCards() {
+    document.querySelectorAll(".course").forEach(function (card) {
+      var btn = card.querySelector("[data-detail]");
+      if (!btn) return;
+      var c = COURSES[btn.getAttribute("data-detail")];
+      if (c && ((c.photos && c.photos.length) || c.photo)) {
+        card.setAttribute("data-hasphotos", "");
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+      }
+    });
+  }
+  if (document.readyState !== "loading") markCards();
+  else document.addEventListener("DOMContentLoaded", markCards);
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "Enter" || e.key === " ") && document.activeElement && document.activeElement.classList && document.activeElement.classList.contains("course")) {
+      var btn = document.activeElement.querySelector("[data-detail]");
+      if (btn) { e.preventDefault(); openDetail(btn.getAttribute("data-detail")); }
+    }
   });
 
   window.OUTSCAPE = {
