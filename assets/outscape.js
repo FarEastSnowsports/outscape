@@ -290,3 +290,19 @@
     openCompare: function (ids) { if (ids && ids.length === 2) openSheet(compareHTML(ids), true); }
   };
 })();
+
+/* ---- hero crossfade (slow, invisible — kiri) ---- */
+(function () {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var HOLD = 7000; // ms each frame holds before dissolving
+  document.querySelectorAll("[data-hero-fade]").forEach(function (h) {
+    var slides = Array.prototype.slice.call(h.querySelectorAll(".hero-slide"));
+    if (slides.length < 2) return;
+    var i = 0;
+    setInterval(function () {
+      slides[i].classList.remove("is-active");
+      i = (i + 1) % slides.length;
+      slides[i].classList.add("is-active");
+    }, HOLD);
+  });
+})();

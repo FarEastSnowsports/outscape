@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/outscape.css?v=28">
+<link rel="stylesheet" href="assets/outscape.css?v=29">
+<script src="assets/outscape.js?v=29" defer></script>
 </head>
 <body>
 
@@ -28,8 +29,10 @@
 <!-- ===== HERO ===== -->
 <header class="hero">
   <div class="sidetab"><span>OUTSCAPE · Summer · Niseko</span></div>
-  <div class="hero-img">
-    <img src="assets/hero_summer.jpg" alt="Mt. Yotei over fresh-green early-summer Niseko">
+  <div class="hero-img" data-hero-fade>
+    <img class="hero-slide is-active" src="assets/hero_a.jpg" alt="Mt. Yotei over fresh-green early-summer Niseko">
+    <img class="hero-slide" src="assets/hero_b.jpg" alt="" aria-hidden="true">
+    <img class="hero-slide" src="assets/hero_c.jpg" alt="" aria-hidden="true">
     <h1 class="hero-title">Summer in Niseko,<br><span class="l2">guided.</span></h1>
     <div class="hero-script">four ways into the mountains ～</div>
   </div>
