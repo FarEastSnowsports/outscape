@@ -715,3 +715,29 @@ a.why-card:hover h4{color:var(--orange)}
 .gearup-photos figure:hover img{transform:scale(1.05)}
 .gearup-credit{margin-top:14px;font-weight:300;font-size:12.5px;color:var(--muted)}
 .gearup-credit a{color:var(--sky);font-weight:600}
+
+/* ============================================================
+   GALLERY PAGE — "The Green Season"
+   Restrained editorial: large frames, earned negative space,
+   thin place captions. (Ma·Kiri)
+   ============================================================ */
+.galp-lead{max-width:1180px;margin:0 auto 16px;padding:0 24px}
+.galp-lead figure{margin:0;position:relative;border-radius:16px;overflow:hidden}
+.galp-lead img{width:100%;height:clamp(340px,52vw,620px);object-fit:cover;display:block}
+.galp-cap{margin-top:12px;font-family:'Inter';font-weight:600;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.galp-cap .dot{color:var(--sky);margin:0 8px;font-weight:700}
+.galp-intro{max-width:600px;margin:46px auto 54px;padding:0 24px;text-align:center}
+.galp-intro p{font-weight:300;font-size:16px;line-height:1.9;color:#4a4a4a}
+.galp-grid{columns:2;column-gap:34px;max-width:1180px;margin:0 auto 30px;padding:0 24px}
+.galp{break-inside:avoid;margin:0 0 34px}
+.galp figure{margin:0;border-radius:14px;overflow:hidden}
+.galp img{width:100%;height:auto;display:block;transition:transform .6s ease}
+.galp:hover img{transform:scale(1.035)}
+.galp figcaption{margin-top:11px;font-family:'Inter';font-weight:600;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.galp figcaption .dot{color:var(--sky);margin:0 7px;font-weight:700}
+@media (max-width:760px){
+  .galp-grid{columns:1;column-gap:0}
+  .galp-lead img{height:300px}
+}
