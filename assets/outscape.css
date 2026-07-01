@@ -819,3 +819,49 @@ a.why-card:hover h4{color:var(--orange)}
 @media(max-width:560px){
   .sw-grid{grid-template-columns:1fr 1fr;gap:8px}
 }
+
+/* ---- season: unified month-by-month panel (temp + daylight + clothing) ---- */
+.season-month{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:18px 20px 16px;background:#fff}
+.season-month .sm-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:15px}
+.season-month .sm-head .ic{flex:none;color:var(--orange);margin-top:1px}
+.season-month .sm-head .ic svg{width:22px;height:22px}
+.season-month .sm-head h5{font-family:'Inter';font-weight:700;font-size:13.5px;color:var(--navy);margin:0 0 3px}
+.season-month .sm-head p{font-weight:300;font-size:12.5px;color:#5a5346;line-height:1.55;margin:0}
+.season-month .sm-head p b{color:var(--navy);font-weight:600}
+.sm-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.sm-col{border:1px solid var(--line);border-radius:11px;padding:11px 6px 12px;background:var(--cream);text-align:center}
+.sm-mon{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sm-temp{margin-top:8px;line-height:1}
+.sm-temp .hi{font-family:'Inter';font-weight:700;font-size:18px;color:#d4823f}
+.sm-temp .lo{display:block;font-family:'Inter';font-weight:600;font-size:13px;color:#5b86a8;margin-top:3px}
+.sm-day{margin-top:11px}
+.sm-track{height:5px;border-radius:3px;background:#e7ddcb;overflow:hidden}
+.sm-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,#f4cd82,#e0a04e)}
+.sm-times{font-family:'Inter';font-weight:600;font-size:9px;letter-spacing:.01em;color:var(--muted);margin-top:5px;white-space:nowrap}
+.sm-kit{margin-top:11px;font-family:'Inter';font-weight:700;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:20px;padding:4px 0;color:#fff}
+.sm-kit.light{background:#5a9c54}
+.sm-kit.layer{background:#d4933f}
+.sm-kit.warm{background:#b0573a}
+.sm-rule{font-weight:300;font-size:12.5px;color:#5a5346;line-height:1.55;margin-top:15px}
+.sm-rule b{color:var(--navy);font-weight:600}
+.sm-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 18px;margin-top:12px}
+.sm-levels .lv{display:flex;align-items:baseline;gap:8px;font-weight:300;font-size:11.5px;color:#5a5346;line-height:1.45}
+.sm-levels .lv b{font-weight:700;color:var(--navy)}
+.sm-levels .lv .dot{flex:none;width:9px;height:9px;border-radius:50%;position:relative;top:2px}
+.sm-levels .lv.light .dot{background:#5a9c54}
+.sm-levels .lv.layer .dot{background:#d4933f}
+.sm-levels .lv.warm .dot{background:#b0573a}
+.sm-always{display:flex;align-items:flex-start;gap:9px;margin-top:14px;font-weight:300;font-size:12px;line-height:1.5;color:#5a5346}
+.sm-always .ic{flex:none;color:var(--sky);margin-top:1px}
+.sm-always .ic svg{width:19px;height:19px}
+.sm-always b{color:var(--navy);font-weight:600}
+.sm-always a{color:var(--sky);font-weight:600}
+.sm-note{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-weight:300;font-style:italic;font-size:11px;line-height:1.55;color:var(--muted)}
+@media(max-width:560px){
+  .sm-grid{gap:5px}
+  .sm-col{padding:9px 3px 10px}
+  .sm-temp .hi{font-size:15px}
+  .sm-times{font-size:7.5px}
+  .sm-kit{font-size:8px;letter-spacing:.02em}
+  .sm-levels{grid-template-columns:1fr;gap:6px}
+}
