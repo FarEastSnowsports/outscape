@@ -828,13 +828,24 @@ a.why-card:hover h4{color:var(--orange)}
 .season-month .sm-head h5{font-family:'Inter';font-weight:700;font-size:13.5px;color:var(--navy);margin:0 0 3px}
 .season-month .sm-head p{font-weight:300;font-size:12.5px;color:#5a5346;line-height:1.55;margin:0}
 .season-month .sm-head p b{color:var(--navy);font-weight:600}
-.sm-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
-.sm-col{border:1px solid var(--line);border-radius:11px;padding:11px 6px 12px;background:var(--cream);text-align:center}
-.sm-mon{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.sm-temp{margin-top:8px;line-height:1}
-.sm-temp .hi{font-family:'Inter';font-weight:700;font-size:18px;color:#d4823f}
-.sm-temp .lo{display:block;font-family:'Inter';font-weight:600;font-size:13px;color:#5b86a8;margin-top:3px}
-.sm-day{margin-top:11px}
+/* temperature line chart */
+.sm-chart{position:relative;margin-top:8px}
+.smc-key{position:absolute;top:-3px;right:0;display:flex;gap:13px}
+.smc-key span{display:inline-flex;align-items:center;gap:5px;font-family:'Inter';font-weight:700;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.smc-key span::before{content:"";width:14px;height:2.5px;border-radius:2px}
+.smc-key .k-hi::before{background:#d4823f}
+.smc-key .k-lo::before{background:#5b86a8}
+.smc-labels{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-family:'Inter';font-weight:700;line-height:1}
+.smc-labels.hi{font-size:14.5px;color:#d4823f;margin-bottom:3px}
+.smc-labels.lo{font-size:13px;color:#5b86a8;margin-top:3px}
+.smc-svg{display:block;width:100%;height:118px}
+.smc-band{fill:#f1ebe0}
+.smc-hi{fill:none;stroke:#d4823f;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.smc-lo{fill:none;stroke:#5b86a8;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.sm-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:12px;padding-top:13px;border-top:1px solid var(--line)}
+.sm-col{text-align:center}
+.sm-mon{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+.sm-day{margin-top:9px}
 .sm-track{height:5px;border-radius:3px;background:#e7ddcb;overflow:hidden}
 .sm-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,#f4cd82,#e0a04e)}
 .sm-times{font-family:'Inter';font-weight:600;font-size:9px;letter-spacing:.01em;color:var(--muted);margin-top:5px;white-space:nowrap}
