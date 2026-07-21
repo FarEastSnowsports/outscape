@@ -358,6 +358,79 @@
   };
 })();
 
+/* ============================================================
+   RoomBoss booking embed
+   ------------------------------------------------------------
+   TO GO LIVE: fill in ONE of RB_HOST or RB_UID below (whichever
+   RoomBoss gives us), bump the ?v= cache version across all HTML,
+   push. Nothing else. While both are empty every tour page keeps
+   the existing "Booking opens soon" panel, so this is safe to
+   ship early.
+
+   The engine is never served from outscape.fareastsnowsports.com
+   — Vercel already owns that hostname for this site.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  // -- Option A (preferred): a RoomBoss-hosted subdomain. The host itself
+  //    identifies the company, so no uid is needed. This is how Propeak
+  //    (propeak.evoke.jp) runs, and it also lets OUTSCAPE carry its own
+  //    custom CSS separately from the winter FES configuration.
+  var RB_HOST = "";   // e.g. "https://outscape.evoke.jp"
+
+  // -- Option B (fallback): the Company ID, used against RoomBoss's shared
+  //    host below. Without it that host answers "Company not found."
+  var RB_UID  = "";   // e.g. "8028808c11f7ee4d0111f7ee55980071"
+
+  var RB_SHARED_HOST = "https://cw4.roomboss.com";
+  var RB_PATH        = "/public/booking/order02.jsf";
+  var RB_VID         = "8a80818a9dff380d019e010ada53774b";  // OUTSCAPE by FAR EAST vendor
+
+  // Product IDs — copied from Product Setup, never retyped: stroll-hd's ID
+  // differs from the vendor ID by its last character only.
+  var RB_PRODUCTS = {
+    "stroll-hd": "8a80818a9dff380d019e010ada53774c",
+    "stroll-fd": "402810829f60eee3019f6109fe760598",
+    "hiking-hd": "402810829f60eee3019f611554ad074f",
+    "hiking-fd": "402810829f60eee3019f611b7712080e"
+  };
+
+  var slot = document.getElementById("roomboss-embed");
+  if (!slot || (!RB_HOST && !RB_UID)) return;
+
+  var pid = RB_PRODUCTS[slot.getAttribute("data-rb-product")];
+  if (!pid) return;
+
+  var url = (RB_HOST || RB_SHARED_HOST).replace(/\/+$/, "") + RB_PATH +
+    "?vid="    + encodeURIComponent(RB_VID) +
+    "&slvid="  + encodeURIComponent(RB_VID) +
+    "&slpid="  + encodeURIComponent(pid) +
+    "&i18n="   + (document.documentElement.lang === "ja" ? "ja" : "en") +
+    (RB_UID ? "&uid=" + encodeURIComponent(RB_UID) : "");
+
+  var frame = document.createElement("iframe");
+  frame.className = "rb-frame";
+  frame.src = url;
+  frame.title = "Booking";
+  frame.loading = "lazy";
+  frame.setAttribute("allow", "payment");
+
+  // Escape hatch: some browsers block third-party cookies inside frames,
+  // which breaks the RoomBoss wizard partway through.
+  var esc = document.createElement("a");
+  esc.className = "rb-escape";
+  esc.href = url;
+  esc.target = "_blank";
+  esc.rel = "noopener";
+  esc.textContent = "Trouble with the form? Open it in a new window ↗";
+
+  slot.innerHTML = "";
+  slot.classList.add("is-live");
+  slot.appendChild(frame);
+  slot.appendChild(esc);
+})();
+
 /* ---- hero crossfade (kiri dissolve, randomised order) ---- */
 (function () {
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

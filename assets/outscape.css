@@ -243,6 +243,17 @@ section{position:relative}
 .roomboss-slot .tag{font-family:'Inter';font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
 .roomboss-slot .msg{margin-top:12px;color:var(--muted);font-size:14px;max-width:440px}
 .roomboss-slot code{background:var(--cream);padding:2px 8px;border-radius:6px;font-size:12px;color:var(--navy)}
+/* live state: the dashed placeholder becomes a plain frame surround */
+.roomboss-slot.is-live{display:block;padding:0;min-height:0;border:0;background:#fff;overflow:hidden}
+.rb-frame{display:block;width:100%;height:880px;border:0;background:#fff}
+.rb-escape{display:block;padding:12px 18px;background:var(--cream);color:var(--navy);
+  font-family:'Inter';font-size:12.5px;text-align:center;text-decoration:none;border-top:1px solid rgba(0,0,0,.07)}
+.rb-escape:hover{text-decoration:underline}
+@media (max-width:760px){
+  .rb-frame{height:1080px}
+  /* reclaim .booking's 26px side padding — the widget needs every pixel on a phone */
+  .roomboss-slot.is-live{margin-left:-26px;margin-right:-26px;border-radius:0}
+}
 
 /* ---------- FOOTER ---------- */
 .foot{background:var(--navy);margin-top:72px;padding:54px 60px 40px;position:relative;overflow:hidden}
