@@ -250,16 +250,10 @@
     });
     return overlay;
   }
-  // variant: true for the wide compare sheet, or a class name ("rb-sheet").
-  // Keep variant names prefixed — a bare "booking" would collide with the
-  // .booking section class on the tour pages and inherit its navy panel.
-  function openSheet(html, variant) {
+  function openSheet(html, wide) {
     ensureOverlay();
     var sheet = overlay.querySelector(".os-sheet");
-    sheet.className = "os-sheet" + (variant === true ? " wide" : variant ? " " + variant : "");
-    // mirrored onto the overlay so its own padding can be targeted per variant
-    if (variant && variant !== true) overlay.setAttribute("data-variant", variant);
-    else overlay.removeAttribute("data-variant");
+    sheet.className = "os-sheet" + (wide ? " wide" : "");
     sheet.innerHTML = html;
     sheet.scrollTop = 0;
     overlay.classList.add("open");
@@ -360,10 +354,7 @@
   window.OUTSCAPE = {
     courses: COURSES,
     openDetail: openDetail,
-    openCompare: function (ids) { if (ids && ids.length === 2) openSheet(compareHTML(ids), true); },
-    // shared with the booking module below, which needs the same overlay
-    openSheet: openSheet,
-    closeModal: closeModal
+    openCompare: function (ids) { if (ids && ids.length === 2) openSheet(compareHTML(ids), true); }
   };
 })();
 
@@ -377,14 +368,11 @@
    it lets OUTSCAPE carry custom CSS separately from the winter
    FES configuration.
 
-   The engine opens in a modal rather than inline. Its first step
-   lists all four products with full descriptions, which measures
-   ~1900px tall on a desktop width and ~3000px on a phone; inline
-   that is a white slab longer than the page it sits in, and since
-   the frame is cross-origin we cannot measure it to fit. A modal
-   sized to the viewport sidesteps the guessing entirely — the
-   frame simply fills it and scrolls, which is what a dialog is
-   expected to do.
+   The engine opens in a new tab, NOT in a frame. RoomBoss serves
+   it with X-Frame-Options: SAMEORIGIN, so any attempt to embed it
+   from this origin renders "refused to connect" — inline or in a
+   modal alike. Do not reintroduce an iframe here unless RoomBoss
+   confirms they have allowed this domain as a frame ancestor.
 
    Blanking RB_HOST (and RB_UID) puts every tour page back to the
    "Booking opens soon" panel — the safe way to pull booking if
@@ -426,38 +414,18 @@
     "&i18n="   + (document.documentElement.lang === "ja" ? "ja" : "en") +
     (RB_UID ? "&uid=" + encodeURIComponent(RB_UID) : "");
 
-  var tour = slot.getAttribute("data-rb-title") || "your tour";
-  var ja   = document.documentElement.lang === "ja";
+  var ja = document.documentElement.lang === "ja";
 
   slot.classList.add("is-live");
   slot.innerHTML =
-    '<button type="button" class="rb-cta">' +
+    '<a class="rb-cta" href="' + url + '" target="_blank" rel="noopener">' +
       (ja ? "空き状況を確認する" : "Check availability") +
-    '</button>' +
+      '<span class="rb-cta-arrow" aria-hidden="true">↗</span>' +
+    '</a>' +
     '<p class="rb-cta-note">' +
-      (ja ? "予約フォームがこのページ上で開きます。"
-          : "The booking form opens on this page.") +
-      ' <a href="' + url + '" target="_blank" rel="noopener">' +
-      (ja ? "別ウィンドウで開く ↗" : "Open in a new window ↗") + '</a></p>';
-
-  slot.querySelector(".rb-cta").addEventListener("click", function () {
-    // The iframe is built on click, not on load: no third-party request
-    // leaves the page until the guest actually asks to book.
-    window.OUTSCAPE.openSheet(
-      '<div class="rb-modal">' +
-        '<div class="rb-modal-bar">' +
-          '<span class="rb-modal-title">' + tour + '</span>' +
-          '<a class="rb-modal-out" href="' + url + '" target="_blank" rel="noopener">' +
-            (ja ? "別ウィンドウ ↗" : "New window ↗") + '</a>' +
-          '<button type="button" class="os-close" aria-label="' +
-            (ja ? "閉じる" : "Close") + '">&times;</button>' +
-        '</div>' +
-        '<iframe class="rb-frame" src="' + url + '" title="' +
-          (ja ? "予約" : "Booking") + '" allow="payment"></iframe>' +
-      '</div>',
-      "rb-sheet"
-    );
-  });
+      (ja ? "予約フォームは新しいタブで開きます。"
+          : "The booking form opens in a new tab.") +
+    '</p>';
 })();
 
 /* ---- hero crossfade (kiri dissolve, randomised order) ---- */
