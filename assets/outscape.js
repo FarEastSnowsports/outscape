@@ -96,7 +96,7 @@
       plan: [], meet: "", meetJp: "", map: "", draftMap: true
     },
 
-    /* ---- Hiking — Half Day courses (DRAFT) ---- */
+    /* ---- Premium Hike — Half Day courses (DRAFT) ---- */
     kagami: {
       name: "Kagami-numa", jp: "鏡沼",
       photo: "assets/course_kagami.jpg",
@@ -250,10 +250,16 @@
     });
     return overlay;
   }
-  function openSheet(html, wide) {
+  // variant: true for the wide compare sheet, or a class name ("rb-sheet").
+  // Keep variant names prefixed — a bare "booking" would collide with the
+  // .booking section class on the tour pages and inherit its navy panel.
+  function openSheet(html, variant) {
     ensureOverlay();
     var sheet = overlay.querySelector(".os-sheet");
-    sheet.className = "os-sheet" + (wide ? " wide" : "");
+    sheet.className = "os-sheet" + (variant === true ? " wide" : variant ? " " + variant : "");
+    // mirrored onto the overlay so its own padding can be targeted per variant
+    if (variant && variant !== true) overlay.setAttribute("data-variant", variant);
+    else overlay.removeAttribute("data-variant");
     sheet.innerHTML = html;
     sheet.scrollTop = 0;
     overlay.classList.add("open");
@@ -354,7 +360,10 @@
   window.OUTSCAPE = {
     courses: COURSES,
     openDetail: openDetail,
-    openCompare: function (ids) { if (ids && ids.length === 2) openSheet(compareHTML(ids), true); }
+    openCompare: function (ids) { if (ids && ids.length === 2) openSheet(compareHTML(ids), true); },
+    // shared with the booking module below, which needs the same overlay
+    openSheet: openSheet,
+    closeModal: closeModal
   };
 })();
 
@@ -367,6 +376,15 @@
    host itself identifies the company, so no uid is needed, and
    it lets OUTSCAPE carry custom CSS separately from the winter
    FES configuration.
+
+   The engine opens in a modal rather than inline. Its first step
+   lists all four products with full descriptions, which measures
+   ~1900px tall on a desktop width and ~3000px on a phone; inline
+   that is a white slab longer than the page it sits in, and since
+   the frame is cross-origin we cannot measure it to fit. A modal
+   sized to the viewport sidesteps the guessing entirely — the
+   frame simply fills it and scrolls, which is what a dialog is
+   expected to do.
 
    Blanking RB_HOST (and RB_UID) puts every tour page back to the
    "Booking opens soon" panel — the safe way to pull booking if
@@ -408,26 +426,38 @@
     "&i18n="   + (document.documentElement.lang === "ja" ? "ja" : "en") +
     (RB_UID ? "&uid=" + encodeURIComponent(RB_UID) : "");
 
-  var frame = document.createElement("iframe");
-  frame.className = "rb-frame";
-  frame.src = url;
-  frame.title = "Booking";
-  frame.loading = "lazy";
-  frame.setAttribute("allow", "payment");
+  var tour = slot.getAttribute("data-rb-title") || "your tour";
+  var ja   = document.documentElement.lang === "ja";
 
-  // Escape hatch: some browsers block third-party cookies inside frames,
-  // which breaks the RoomBoss wizard partway through.
-  var esc = document.createElement("a");
-  esc.className = "rb-escape";
-  esc.href = url;
-  esc.target = "_blank";
-  esc.rel = "noopener";
-  esc.textContent = "Trouble with the form? Open it in a new window ↗";
-
-  slot.innerHTML = "";
   slot.classList.add("is-live");
-  slot.appendChild(frame);
-  slot.appendChild(esc);
+  slot.innerHTML =
+    '<button type="button" class="rb-cta">' +
+      (ja ? "空き状況を確認する" : "Check availability") +
+    '</button>' +
+    '<p class="rb-cta-note">' +
+      (ja ? "予約フォームがこのページ上で開きます。"
+          : "The booking form opens on this page.") +
+      ' <a href="' + url + '" target="_blank" rel="noopener">' +
+      (ja ? "別ウィンドウで開く ↗" : "Open in a new window ↗") + '</a></p>';
+
+  slot.querySelector(".rb-cta").addEventListener("click", function () {
+    // The iframe is built on click, not on load: no third-party request
+    // leaves the page until the guest actually asks to book.
+    window.OUTSCAPE.openSheet(
+      '<div class="rb-modal">' +
+        '<div class="rb-modal-bar">' +
+          '<span class="rb-modal-title">' + tour + '</span>' +
+          '<a class="rb-modal-out" href="' + url + '" target="_blank" rel="noopener">' +
+            (ja ? "別ウィンドウ ↗" : "New window ↗") + '</a>' +
+          '<button type="button" class="os-close" aria-label="' +
+            (ja ? "閉じる" : "Close") + '">&times;</button>' +
+        '</div>' +
+        '<iframe class="rb-frame" src="' + url + '" title="' +
+          (ja ? "予約" : "Booking") + '" allow="payment"></iframe>' +
+      '</div>',
+      "rb-sheet"
+    );
+  });
 })();
 
 /* ---- hero crossfade (kiri dissolve, randomised order) ---- */
