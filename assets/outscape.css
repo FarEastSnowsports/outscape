@@ -29,6 +29,21 @@ body{
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
+/* ---------- JAPANESE LINE BREAKING ----------
+   Japanese wraps between any two characters by default, which splits
+   proper nouns down the middle on narrow screens (平沼 咲 / 花).
+   keep-all suppresses those mid-word breaks; overflow-wrap is the
+   safety valve so a run wider than its line still breaks instead of
+   overflowing. Prose is unaffected in practice — a long Japanese
+   sentence has no internal break opportunities either way. */
+.jp,.tbc,.season-pin .t small,.ctable td,.ctable th,.legal-sec b{
+  word-break:keep-all;overflow-wrap:break-word}
+/* A name or heading label sitting beside English text: let the whole
+   Japanese unit drop to the next line rather than break at its own
+   internal space (平沼 / 咲花). Short labels only — never prose. */
+.guide h2 .jp,.legal-sec h3 .jp,.gf-name .jp{
+  display:inline-block;white-space:nowrap}
+
 /* ---------- NAV ---------- */
 .nav{
   position:sticky;top:0;z-index:100;
@@ -646,7 +661,10 @@ a.why-card:hover h4{color:var(--orange)}
   .wrap{padding:0 24px}
   .intro{grid-template-columns:1fr;gap:30px;padding:54px 0 40px}
   .facts{grid-template-columns:repeat(2,1fr)}
-  .course-grid{grid-template-columns:repeat(2,1fr)}
+  /* Two up, but not below ~360px: at 320px that leaves 96px of text
+     column, which is narrower than a course name like パンケメクンナイ湿原
+     and forces it to break mid-word. */
+  .course-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
   .gal-grid{grid-template-columns:repeat(2,1fr)}
   .eat-grid{grid-template-columns:repeat(2,1fr)}
   .hero-title{left:30px;top:40px}.hero-script{left:34px}
