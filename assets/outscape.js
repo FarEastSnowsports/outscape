@@ -361,27 +361,26 @@
 /* ============================================================
    RoomBoss booking embed
    ------------------------------------------------------------
-   TO GO LIVE: fill in ONE of RB_HOST or RB_UID below (whichever
-   RoomBoss gives us), bump the ?v= cache version across all HTML,
-   push. Nothing else. While both are empty every tour page keeps
-   the existing "Booking opens soon" panel, so this is safe to
-   ship early.
-
    The engine is never served from outscape.fareastsnowsports.com
-   — Vercel already owns that hostname for this site.
+   — Vercel already owns that hostname for this site. RoomBoss
+   issued us a subdomain of their own instead (2026-07-24); the
+   host itself identifies the company, so no uid is needed, and
+   it lets OUTSCAPE carry custom CSS separately from the winter
+   FES configuration.
+
+   Blanking RB_HOST (and RB_UID) puts every tour page back to the
+   "Booking opens soon" panel — the safe way to pull booking if
+   something breaks.
    ============================================================ */
 (function () {
   "use strict";
 
-  // -- Option A (preferred): a RoomBoss-hosted subdomain. The host itself
-  //    identifies the company, so no uid is needed. This is how Propeak
-  //    (propeak.evoke.jp) runs, and it also lets OUTSCAPE carry its own
-  //    custom CSS separately from the winter FES configuration.
-  var RB_HOST = "";   // e.g. "https://outscape.evoke.jp"
+  var RB_HOST = "https://outscape.bookfast.jp";
 
-  // -- Option B (fallback): the Company ID, used against RoomBoss's shared
-  //    host below. Without it that host answers "Company not found."
-  var RB_UID  = "";   // e.g. "8028808c11f7ee4d0111f7ee55980071"
+  // Fallback route: the Company ID, used against RoomBoss's shared host
+  // below. Only needed if we ever stop using a dedicated subdomain —
+  // without it that host answers "Company not found."
+  var RB_UID  = "";
 
   var RB_SHARED_HOST = "https://cw4.roomboss.com";
   var RB_PATH        = "/public/booking/order02.jsf";
