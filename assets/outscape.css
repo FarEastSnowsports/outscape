@@ -281,12 +281,16 @@ section{position:relative}
   border-radius:999px;border:1px solid rgba(255,255,255,.16);
   background:rgba(255,255,255,.06);
   font-size:12.5px;line-height:1.6;color:#d7e0e9}
-.rb-cta-pick b{color:#fff;font-weight:600;white-space:nowrap}
+/* The Japanese label carries a katakana gloss and runs long, so this
+   cannot be nowrap — it would push the pill past the panel. Same
+   treatment as the other Japanese runs above: hold words together,
+   break only when a run is wider than the line. */
+.rb-cta-pick b{color:#fff;font-weight:600;
+  word-break:keep-all;overflow-wrap:break-word}
 
 @media (max-width:760px){
   .rb-cta{width:100%;padding:16px 20px;justify-content:center}
   .rb-cta-pick{display:block;padding:10px 14px}
-  .rb-cta-pick b{white-space:normal}
 }
 
 /* ---------- FOOTER ---------- */
