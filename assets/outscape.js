@@ -99,6 +99,7 @@
     /* ---- Premium Hike — Half Day courses (DRAFT) ---- */
     kagami: {
       name: "Kagami-numa", jp: "鏡沼",
+      photos: ["assets/courses/kagami_1.jpg","assets/courses/kagami_2.jpg","assets/courses/kagami_3.jpg","assets/courses/kagami_4.jpg"],
       photo: "assets/course_kagami.jpg",
       level: "Moderate", levelClass: "mod",
       difficulty: "Moderate", duration: "~2 hrs", access: "Mountain trail", elevation: "+100–230 m",
@@ -110,6 +111,7 @@
     },
     shirakaba: {
       name: "Shirakaba-yama", jp: "白樺山",
+      photos: ["assets/courses/shirakaba_1.jpg","assets/courses/shirakaba_2.jpg","assets/courses/shirakaba_3.jpg","assets/courses/shirakaba_4.jpg","assets/courses/shirakaba_5.jpg"],
       photo: "assets/course_shirakaba.jpg",
       level: "Moderate", levelClass: "mod",
       difficulty: "Moderate", duration: "~2.5 hrs", access: "Ridge trail", elevation: "+225 m",
@@ -121,6 +123,7 @@
     },
     annupuri_g: {
       name: "Annupuri Gondola", jp: "アンヌプリ ゴンドラ",
+      photos: ["assets/courses/annupuri_g_1.jpg","assets/courses/annupuri_g_2.jpg","assets/courses/annupuri_g_3.jpg","assets/courses/annupuri_g_4.jpg","assets/courses/annupuri_g_5.jpg"],
       photo: "assets/course_annupuri.jpg",
       level: "Moderate · gondola", levelClass: "mod",
       difficulty: "Moderate", duration: "~2.5–3 hrs", access: "Gondola", elevation: "+300 m",
@@ -128,6 +131,94 @@
       draft: true,
       tag: "ゴンドラで稜線へ — gondola to the ridge",
       desc: "Ride the summer gondola most of the way, then walk the ridge to the views. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
+      plan: [], meet: "", meetJp: "", map: "", draftMap: true
+    }
+    ,
+    /* ---- Nature Stroll — Full Day courses (DRAFT) ---- */
+    iwao: {
+      name: "Iwao-nupuri", jp: "岩雄登",
+      photo: "assets/course_iwao.jpg",
+      photos: ["assets/courses/iwao_1.jpg","assets/courses/iwao_2.jpg","assets/courses/iwao_3.jpg","assets/courses/iwao_4.jpg"],
+      level: "Moderate", levelClass: "mod",
+      difficulty: "Moderate", duration: "~4 hrs", access: "Volcanic trail", elevation: "+400–440 m",
+      toilet: null, best: "Volcanic crater &amp; wide views",
+      draft: true,
+      tag: "火の山の記憶 — memory of the fire mountain",
+      desc: "A steady climb onto a bare volcanic dome, with steam vents and long views across the range. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
+      plan: [], meet: "", meetJp: "", map: "", draftMap: true
+    },
+    iwao_mine: {
+      name: "Iwao-nupuri Mine Trail", jp: "岩雄登 鉱山跡コース",
+      photo: "assets/course_iwao_mine.jpg",
+      photos: ["assets/courses/iwao_1.jpg","assets/courses/iwao_4.jpg","assets/courses/iwao_3.jpg"],
+      level: "Moderate", levelClass: "mod",
+      difficulty: "Moderate", duration: "~4 hrs", access: "Forest &amp; mine trail", elevation: "+250 m",
+      toilet: null, best: "Sulphur-mine history &amp; ponds",
+      draft: true,
+      tag: "黄金の記憶 — golden memory",
+      desc: "A longer but gentler line past the old sulphur workings and their green-blue ponds. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
+      plan: [], meet: "", meetJp: "", map: "", draftMap: true
+    },
+
+    /* ---- Premium Hike — Full Day routes (DRAFT) ---- */
+    yotei: {
+      name: "Mt. Yotei", jp: "羊蹄山",
+      photo: "assets/course_yotei.jpg",
+      photos: ["assets/courses/yotei_1.jpg","assets/courses/yotei_2.jpg","assets/courses/yotei_3.jpg","assets/courses/yotei_4.jpg","assets/courses/yotei_5.jpg"],
+      level: "Challenging", levelClass: "chall",
+      difficulty: "Challenging", duration: "~8–9 hrs", access: "Summit trail", elevation: "+1,500–1,600 m",
+      toilet: null, best: "The crater rim above the clouds",
+      draft: true,
+      tag: "蝦夷富士へ — up Ezo-Fuji",
+      desc: "The big one: a long, steady ascent of Niseko's landmark volcano to walk its crater rim. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
+      plan: [], meet: "", meetJp: "", map: "", draftMap: true
+    },
+    chise: {
+      name: "Chise-nupuri", jp: "チセヌプリ",
+      photo: "assets/course_chise.jpg",
+      photos: ["assets/courses/chise_1.jpg","assets/courses/chise_2.jpg"],
+      level: "Moderate", levelClass: "mod",
+      difficulty: "Moderate", duration: "~2–4.5 hrs", access: "Mountain trail", elevation: "+300–500 m",
+      toilet: null, best: "Quiet inner-range summit",
+      draft: true,
+      tag: "静かな山へ — into the quiet range",
+      desc: "A quieter summit in the heart of the range, often with the lake mirroring the peak below. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
+      plan: [], meet: "", meetJp: "", map: "", draftMap: true
+    },
+    panke: {
+      name: "Panke-mekunnai Wetlands", jp: "パンケメクンナイ湿原",
+      photo: "assets/course_panke.jpg",
+      photos: ["assets/courses/panke_1.jpg","assets/courses/panke_2.jpg","assets/courses/panke_3.jpg","assets/courses/panke_4.jpg"],
+      level: "Moderate", levelClass: "mod",
+      difficulty: "Moderate", duration: "~4.5 hrs", access: "Wetland &amp; ridge", elevation: "+350 m",
+      toilet: null, best: "Remote highland wetland",
+      draft: true,
+      tag: "秘密の湿原へ — to the hidden marsh",
+      desc: "A long, rolling walk out to a remote highland wetland few people ever see. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
+      plan: [], meet: "", meetJp: "", map: "", draftMap: true
+    },
+    mekunnai: {
+      name: "Range Traverse ④ Mae-Mekunnai → Mekunnai → Iwanai", jp: "前目国内→目国内→岩内",
+      photo: "assets/course_mekunnai.jpg",
+      photos: ["assets/courses/mekunnai_1.jpg","assets/courses/mekunnai_2.jpg","assets/courses/mekunnai_3.jpg","assets/courses/mekunnai_4.jpg"],
+      level: "Challenging", levelClass: "chall",
+      difficulty: "Challenging", duration: "~5–7 hrs", access: "Range traverse", elevation: "+761 m",
+      toilet: null, best: "Rolling green summits, one after another",
+      draft: true,
+      tag: "稜線をつなぐ — linking the summits",
+      desc: "A full traverse over rolling green summits with the sea on one side and the range on the other. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
+      plan: [], meet: "", meetJp: "", map: "", draftMap: true
+    },
+    iwanai: {
+      name: "Range Traverse ⑤ Iwanai → Raiden", jp: "岩内→雷電",
+      photo: "assets/course_iwanai.jpg",
+      photos: ["assets/courses/iwanai_1.jpg","assets/courses/iwanai_2.jpg","assets/courses/iwanai_3.jpg","assets/courses/iwanai_4.jpg"],
+      level: "Challenging", levelClass: "chall",
+      difficulty: "Challenging", duration: "~5–6 hrs", access: "Range traverse", elevation: "+650–750 m",
+      toilet: null, best: "Ridgeline above the sea",
+      draft: true,
+      tag: "海へ落ちる稜線 — the ridge that falls to the sea",
+      desc: "The far end of the range, where the ridgeline runs out above the Sea of Japan. <span class=\"tbc\">DRAFT</span> — content pending confirmation.",
       plan: [], meet: "", meetJp: "", map: "", draftMap: true
     }
   };
@@ -324,17 +415,17 @@
     // whole course card opens its photo gallery (id taken from the hidden detail button)
     var card = e.target.closest(".course");
     if (card && !e.target.closest(".os-modal")) {
-      var btn = card.querySelector("[data-detail]");
-      if (btn) { e.preventDefault(); openDetail(btn.getAttribute("data-detail")); }
+      var id = card.getAttribute("data-detail") || (card.querySelector("[data-detail]") || {getAttribute:function(){return null;}}).getAttribute("data-detail");
+      if (id) { e.preventDefault(); openDetail(id); }
     }
   });
 
   // mark course cards that have a gallery so they look/act clickable
   function markCards() {
     document.querySelectorAll(".course").forEach(function (card) {
-      var btn = card.querySelector("[data-detail]");
-      if (!btn) return;
-      var c = COURSES[btn.getAttribute("data-detail")];
+      var id = card.getAttribute("data-detail") || (card.querySelector("[data-detail]") || {getAttribute:function(){return null;}}).getAttribute("data-detail");
+      if (!id) return;
+      var c = COURSES[id];
       if (c && ((c.photos && c.photos.length) || c.photo)) {
         card.setAttribute("data-hasphotos", "");
         card.setAttribute("role", "button");
@@ -346,10 +437,45 @@
   else document.addEventListener("DOMContentLoaded", markCards);
   document.addEventListener("keydown", function (e) {
     if ((e.key === "Enter" || e.key === " ") && document.activeElement && document.activeElement.classList && document.activeElement.classList.contains("course")) {
-      var btn = document.activeElement.querySelector("[data-detail]");
-      if (btn) { e.preventDefault(); openDetail(btn.getAttribute("data-detail")); }
+      var el = document.activeElement;
+      var id = el.getAttribute("data-detail") || (el.querySelector("[data-detail]") || {getAttribute:function(){return null;}}).getAttribute("data-detail");
+      if (id) { e.preventDefault(); openDetail(id); }
     }
   });
+
+
+  // ---- CARD ↔ SPECTRUM DOT LINKING -------------------------------------
+  // Hovering an Example Course lifts its dot on the effort spectrum (and back),
+  // so the number badge and the dot read as the same thing.
+  function linkSpectrum() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".course"));
+    var dots  = Array.prototype.slice.call(document.querySelectorAll(".cspec-dot"));
+    if (!dots.length) return;
+    function dotFor(card) {
+      var badge = card.querySelector(".course-num");
+      if (!badge) return null;
+      var n = badge.textContent.trim();
+      for (var i = 0; i < dots.length; i++) {
+        if (dots[i].textContent.trim() === n) return dots[i];
+      }
+      return null;
+    }
+    cards.forEach(function (card) {
+      var dot = dotFor(card);
+      if (!dot) return;
+      function on()  { dot.classList.add("is-linked"); card.classList.add("is-linked"); }
+      function off() { dot.classList.remove("is-linked"); card.classList.remove("is-linked"); }
+      card.addEventListener("mouseenter", on);
+      card.addEventListener("mouseleave", off);
+      card.addEventListener("focus", on, true);
+      card.addEventListener("blur", off, true);
+      // and the reverse: hovering a dot lifts its card
+      dot.addEventListener("mouseenter", on);
+      dot.addEventListener("mouseleave", off);
+    });
+  }
+  if (document.readyState !== "loading") linkSpectrum();
+  else document.addEventListener("DOMContentLoaded", linkSpectrum);
 
   window.OUTSCAPE = {
     courses: COURSES,
