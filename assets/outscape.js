@@ -527,11 +527,31 @@
     "hiking-fd": "402810829f60eee3019f611b7712080e"
   };
 
+  /* slpid gets the guest past the category and type steps, but it does NOT
+     narrow the product list: RoomBoss hangs all four products off a single
+     type, and picking one is a JSF postback with no addressable URL, so
+     there is no deep link to a single product. All four are therefore
+     listed whichever tour page the guest arrives from — and half day
+     (¥36,000) sits next to full day (¥52,000).
+
+     Until the RoomBoss side is restructured (one type per product would
+     make slpid land on a list of one), we name the row and its price on
+     the way out so the guest knows what to pick. Keep these labels
+     matching RoomBoss's own product names word for word. */
+  var RB_LABELS = {
+    "stroll-hd": { en: "Nature Stroll – Half Day", ja: "Nature Stroll – Half Day（ネイチャーストロール 半日）", price: "¥36,000" },
+    "stroll-fd": { en: "Nature Stroll – Full Day", ja: "Nature Stroll – Full Day（ネイチャーストロール 一日）", price: "¥52,000" },
+    "hiking-hd": { en: "Premium Hike – Half Day", ja: "Premium Hike – Half Day（プレミアムハイク 半日）", price: "¥36,000" },
+    "hiking-fd": { en: "Premium Hike – Full Day", ja: "Premium Hike – Full Day（プレミアムハイク 一日）", price: "¥52,000" }
+  };
+
   var slot = document.getElementById("roomboss-embed");
   if (!slot || (!RB_HOST && !RB_UID)) return;
 
-  var pid = RB_PRODUCTS[slot.getAttribute("data-rb-product")];
+  var key = slot.getAttribute("data-rb-product");
+  var pid = RB_PRODUCTS[key];
   if (!pid) return;
+  var label = RB_LABELS[key];
 
   var url = (RB_HOST || RB_SHARED_HOST).replace(/\/+$/, "") + RB_PATH +
     "?vid="    + encodeURIComponent(RB_VID) +
@@ -551,7 +571,13 @@
     '<p class="rb-cta-note">' +
       (ja ? "予約フォームは新しいタブで開きます。"
           : "The booking form opens in a new tab.") +
-    '</p>';
+    '</p>' +
+    (label
+      ? '<p class="rb-cta-pick">' +
+          (ja ? 'すべてのツアーが一覧に並びます。<b>' + label.ja + '・' + label.price + '</b> をお選びください。'
+              : 'All four tours are listed. Choose <b>' + label.en + ' &middot; ' + label.price + '</b>.') +
+        '</p>'
+      : '');
 })();
 
 /* ---- hero crossfade (kiri dissolve, randomised order) ---- */
