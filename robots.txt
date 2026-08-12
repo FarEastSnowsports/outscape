@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# An old self-contained export of the Nature Stroll Half Day page, still
+# served here and carrying the same <title> as stroll-hd.html. Nothing
+# links to it. Kept out of the index so it cannot compete with the real
+# page; safe to delete the file outright once nobody wants it as a backup.
+Disallow: /stroll-hd.artifact.html
+
 Sitemap: https://outscape.fareastsnowsports.com/sitemap.xml
