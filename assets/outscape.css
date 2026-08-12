@@ -905,19 +905,26 @@ a.why-card:hover h4{color:var(--orange)}
 .sm-track{height:5px;border-radius:3px;background:#e7ddcb;overflow:hidden}
 .sm-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,#f4cd82,#e0a04e)}
 .sm-times{font-family:'Inter';font-weight:600;font-size:9px;letter-spacing:.01em;color:var(--muted);margin-top:5px;white-space:nowrap}
-.sm-kit{margin-top:11px;font-family:'Inter';font-weight:700;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:20px;padding:4px 0;color:#fff}
-.sm-kit.light{background:#9fb8c9}
-.sm-kit.layer{background:#5b86a8}
-.sm-kit.warm{background:#33506b}
+/* clothing cue — stacked bars show how many layers, not just a word */
+.sm-kit{margin-top:13px;display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:11px;border-top:1px solid var(--line)}
+.kb-stack{display:flex;flex-direction:column-reverse;gap:3px;width:100%;max-width:64px;justify-content:flex-end;min-height:36px}
+.kb{height:9px;border-radius:3px;background:var(--kit,#5b86a8);box-shadow:inset 0 -1px 0 rgba(255,255,255,.35)}
+.kb-t{font-family:'Inter';font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--kit,#5b86a8)}
+.sm-kit.light{--kit:#9fb8c9}
+.sm-kit.layer{--kit:#5b86a8}
+.sm-kit.warm{--kit:#33506b}
+/* legend uses the same stack, smaller */
+.kb-stack.sm{width:16px;gap:1.5px;flex:none;position:relative;top:2px}
+.kb-stack.sm .kb{height:3.5px}
+.sm-levels .lv.light{--kit:#9fb8c9}
+.sm-levels .lv.layer{--kit:#5b86a8}
+.sm-levels .lv.warm{--kit:#33506b}
 .sm-rule{font-weight:300;font-size:12.5px;color:#5a5346;line-height:1.55;margin-top:15px}
 .sm-rule b{color:var(--navy);font-weight:600}
 .sm-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 18px;margin-top:12px}
 .sm-levels .lv{display:flex;align-items:baseline;gap:8px;font-weight:300;font-size:11.5px;color:#5a5346;line-height:1.45}
 .sm-levels .lv b{font-weight:700;color:var(--navy)}
 .sm-levels .lv .dot{flex:none;width:9px;height:9px;border-radius:50%;position:relative;top:2px}
-.sm-levels .lv.light .dot{background:#9fb8c9}
-.sm-levels .lv.layer .dot{background:#5b86a8}
-.sm-levels .lv.warm .dot{background:#33506b}
 .sm-always{display:flex;align-items:flex-start;gap:9px;margin-top:14px;font-weight:300;font-size:12px;line-height:1.5;color:#5a5346}
 .sm-always .ic{flex:none;color:var(--sky);margin-top:1px}
 .sm-always .ic svg{width:19px;height:19px}
@@ -929,6 +936,8 @@ a.why-card:hover h4{color:var(--orange)}
   .sm-col{padding:9px 3px 10px}
   .sm-temp .hi{font-size:15px}
   .sm-times{font-size:7.5px}
-  .sm-kit{font-size:8px;letter-spacing:.02em}
+  .kb-t{font-size:7.5px;letter-spacing:.02em}
+  .kb{height:7px}
+  .kb-stack{gap:2px;min-height:27px}
   .sm-levels{grid-template-columns:1fr;gap:6px}
 }
