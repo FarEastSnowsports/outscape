@@ -100,7 +100,7 @@
     kagami: {
       name: "Kagami-numa", jp: "鏡沼",
       photos: ["assets/courses/kagami_1.jpg","assets/courses/kagami_2.jpg","assets/courses/kagami_3.jpg","assets/courses/kagami_4.jpg"],
-      photo: "assets/course_kagami.jpg",
+      photo: "assets/courses/kagami_2.jpg",
       level: "Moderate", levelClass: "mod",
       difficulty: "Moderate", duration: "~2 hrs", access: "Mountain trail", elevation: "+100–230 m",
       toilet: null, best: "Mirror pond &amp; ridgeline",
